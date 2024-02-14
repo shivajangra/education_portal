@@ -16,25 +16,21 @@ class SettingsTableSeeder extends Seeder
         DB::table('settings')->delete();
 
         $data = [
-            ['type' => 'current_session', 'description' => '2018-2019'],
-            ['type' => 'system_title', 'description' => 'CJIA'],
-            ['type' => 'system_name', 'description' => 'CJ INSPIRED ACADEMY'],
-            ['type' => 'term_ends', 'description' => '7/10/2018'],
-            ['type' => 'term_begins', 'description' => '7/10/2018'],
-            ['type' => 'phone', 'description' => '0123456789'],
-            ['type' => 'address', 'description' => '18B North Central Park, Behind Central Square Tourist Center'],
-            ['type' => 'system_email', 'description' => 'cjacademy@cj.com'],
-            ['type' => 'alt_email', 'description' => ''],
+            ['type' => 'current_session', 'description' => '2023-2024'],
+            ['type' => 'system_title', 'description' => 'Inovx'],
+            ['type' => 'system_name', 'description' => 'Inovx Edu'],
+            ['type' => 'term_ends', 'description' => '10/02/2023'],
+            ['type' => 'term_begins', 'description' => '7/10/2024'],
+            ['type' => 'phone', 'description' => '9999315163'],
+            ['type' => 'address', 'description' => '103, khushi Homes, Rajender Park, Gurgoan'],
+            ['type' => 'system_email', 'description' => 'business@inovx.in'],
+            ['type' => 'alt_email', 'description' => 'inovx.india@gmail.com'],
             ['type' => 'email_host', 'description' => ''],
             ['type' => 'email_pass', 'description' => ''],
             ['type' => 'lock_exam', 'description' => 0],
             ['type' => 'logo', 'description' => ''],
-            ['type' => 'next_term_fees_j', 'description' => '20000'],
             ['type' => 'next_term_fees_pn', 'description' => '25000'],
-            ['type' => 'next_term_fees_p', 'description' => '25000'],
             ['type' => 'next_term_fees_n', 'description' => '25600'],
-            ['type' => 'next_term_fees_s', 'description' => '15600'],
-            ['type' => 'next_term_fees_c', 'description' => '1600'],
         ];
 
         DB::table('settings')->insert($data);

@@ -25,21 +25,21 @@ class UsersTableSeeder extends Seeder
 
     protected function createNewUsers()
     {
-        $password = Hash::make('cj'); // Default user password
+        $password = Hash::make('demo@123'); // Default user password
 
         $d = [
 
-            ['name' => 'CJ Inspired',
-                'email' => 'cj@cj.com',
-                'username' => 'cj',
+            ['name' => 'Inovx User',
+                'email' => 'business@inovx.in',
+                'username' => 'inovx',
                 'password' => $password,
                 'user_type' => 'super_admin',
                 'code' => strtoupper(Str::random(10)),
                 'remember_token' => Str::random(10),
             ],
 
-            ['name' => 'Admin KORA',
-            'email' => 'admin@admin.com',
+            ['name' => 'Admin Inovx',
+            'email' => 'admin@eduinovx.in',
             'password' => $password,
             'user_type' => 'admin',
             'username' => 'admin',
@@ -47,8 +47,8 @@ class UsersTableSeeder extends Seeder
             'remember_token' => Str::random(10),
             ],
 
-            ['name' => 'Teacher Chike',
-                'email' => 'teacher@teacher.com',
+            ['name' => 'Teacher Inovx',
+                'email' => 'teacher@eduinovx.in',
                 'user_type' => 'teacher',
                 'username' => 'teacher',
                 'password' => $password,
@@ -56,8 +56,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
 
-            ['name' => 'Parent Kaba',
-                'email' => 'parent@parent.com',
+            ['name' => 'Parent Inovx',
+                'email' => 'parent@eduinovx.in',
                 'user_type' => 'parent',
                 'username' => 'parent',
                 'password' => $password,
@@ -65,8 +65,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
 
-            ['name' => 'Accountant Jeff',
-                'email' => 'accountant@accountant.com',
+            ['name' => 'Accountant Inovx',
+                'email' => 'accountant@eduinovx.in',
                 'user_type' => 'accountant',
                 'username' => 'accountant',
                 'password' => $password,
@@ -87,7 +87,7 @@ class UsersTableSeeder extends Seeder
             foreach ($user_type as $k => $ut){
 
                 $data[] = ['name' => ucfirst($user_type[$k]).' '.$i,
-                    'email' => $user_type[$k].$i.'@'.$user_type[$k].'.com',
+                    'email' => $user_type[$k].$i.'@eduinovx.in',
                     'user_type' => $user_type[$k],
                     'username' => $user_type[$k].$i,
                     'password' => Hash::make($user_type[$k]),

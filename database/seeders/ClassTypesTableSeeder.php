@@ -17,12 +17,15 @@ class ClassTypesTableSeeder extends Seeder
         DB::table('class_types')->delete();
 
         $data = [
-            ['name' => 'Creche', 'code' => 'C'],
             ['name' => 'Pre Nursery', 'code' => 'PN'],
             ['name' => 'Nursery', 'code' => 'N'],
-            ['name' => 'Primary', 'code' => 'P'],
-            ['name' => 'Junior Secondary', 'code' => 'J'],
-            ['name' => 'Senior Secondary', 'code' => 'S'],
+            ['name' => 'Junior Secondary (UKG)', 'code' => 'UKG'],
+            ['name' => 'Senior Secondary (LKG)', 'code' => 'LKG'],
+            ['name' => 'Fisrt', 'code' => '1'],
+            ['name' => 'Second', 'code' => '2'],
+            ['name' => 'Third', 'code' => '3'],
+            ['name' => 'Fourth', 'code' => '4'],
+            ['name' => 'Fifth', 'code' => '5']
         ];
 
         DB::table('class_types')->insert($data);
