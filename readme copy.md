@@ -113,6 +113,8 @@ Your Contributions & suggestions are welcomed. Please use Pull Request
 ***Please Note*** that some sections of this project are in the work-in-progress stage and would be updated soon. These include:
 
 - The Noticeboard/Calendar in the Dashboard Area
+ reference :  https://codepen.io/lutfiq/pen/PoZrbyO
+
 - Librarian/Acountant user pages
 - Library Resources/Study Materials Upload for Students
 
