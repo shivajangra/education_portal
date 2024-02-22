@@ -10,6 +10,7 @@ use App\Repositories\LocationRepo;
 use App\Repositories\MyClassRepo;
 use App\Repositories\StudentRepo;
 use App\Repositories\UserRepo;
+use App\Repositories\EventRepo;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,9 +19,9 @@ use Illuminate\Support\Str;
 
 class StudentRecordController extends Controller
 {
-    protected $loc, $my_class, $user, $student;
+    protected $loc, $my_class, $user, $student,$event;
 
-   public function __construct(LocationRepo $loc, MyClassRepo $my_class, UserRepo $user, StudentRepo $student)
+   public function __construct(LocationRepo $loc, EventRepo $event ,MyClassRepo $my_class, UserRepo $user, StudentRepo $student)
    {
        $this->middleware('teamSA', ['only' => ['edit','update', 'reset_pass', 'create', 'store', 'graduated'] ]);
        $this->middleware('super_admin', ['only' => ['destroy',] ]);
@@ -29,6 +30,7 @@ class StudentRecordController extends Controller
         $this->my_class = $my_class;
         $this->user = $user;
         $this->student = $student;
+        $this->event = $event;
    }
 
     public function reset_pass($st_id)
@@ -46,6 +48,7 @@ class StudentRecordController extends Controller
         $data['dorms'] = $this->student->getAllDorms();
         $data['states'] = $this->loc->getStates();
         $data['nationals'] = $this->loc->getAllNationals();
+
         return view('pages.support_team.students.add', $data);
     }
 
@@ -81,6 +84,19 @@ class StudentRecordController extends Controller
         $sr['session'] = Qs::getSetting('current_session');
 
         $this->student->createRecord($sr); // Create Student
+
+        if ($user->dob) {
+            $uDob = explode('/',$user->dob);
+            $cDob = date('Y').'-'.$uDob[0].'-'.$uDob[1];
+            $ev = [
+                'name' => "Birthday - ".$user->name,
+                'time_from' => $cDob,
+                "time_to" => $cDob,
+                "created_by" =>  3,
+                "color_code" => "#000000"
+            ];
+            $evRecord = $this->event->create($ev);
+        }
         return Qs::jsonStoreOk();
     }
 

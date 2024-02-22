@@ -49,7 +49,7 @@ class StatesTableSeeder extends Seeder
             "Delhi",
             "Lakshadweep",
             "Puducherry"
-        ]
+        ];
 
         foreach ($states as $state) {
             State::create(['name' => $state]);

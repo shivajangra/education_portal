@@ -12,6 +12,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@dashboard')->name('home');
     Route::get('/home', 'HomeController@dashboard')->name('home');
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+    Route::post('/add-event', 'HomeController@createEvent')->name('add-event');
 
     Route::group(['prefix' => 'my_account'], function() {
         Route::get('/', 'MyAccountController@edit_profile')->name('my_account');

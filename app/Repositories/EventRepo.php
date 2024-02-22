@@ -11,6 +11,10 @@ class EventRepo
     {
         return Event::create($data);
     }
+    public function getAll()
+    {
+        return Event::all();
+    }
 
     public function update($id, $data)
     {

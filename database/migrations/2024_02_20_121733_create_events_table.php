@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBloodGroupsTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,6 +19,7 @@ class CreateBloodGroupsTable extends Migration
             $table->string('time_from', 100);
             $table->string('time_to', 100);
             $table->string('created_by');
+            $table->string('color_code');
             $table->timestamps();
         });
     }
