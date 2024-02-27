@@ -166,7 +166,12 @@ class PaymentController extends Controller
             $d['selected'] = true;
             $d['my_class_id'] = $class_id;
         }
-
+        $d['years'] = array();
+        for($y=date('Y', strtotime('- 3 years')); $y<=date('Y', strtotime('+ 1 years')); $y++){
+            array_push($d['years'], ($y-=1).'-'.($y+=1));
+        }
+        $d['months'] = array("January","February","March","April","May","June","July",
+        "August","September","October","November","December");
         return view('pages.support_team.payments.manage', $d);
     }
 
@@ -186,28 +191,28 @@ class PaymentController extends Controller
         $this->validate($req, [
             'my_class_id' => 'required|exists:my_classes,id'
         ], [], ['my_class_id' => 'Class']);
+        $students = $this->student->findStudentsByClass($req->my_class_id);
+        // $wh['my_class_id'] = $class_id = $req->my_class_id;
 
-        $wh['my_class_id'] = $class_id = $req->my_class_id;
+        // $pay1 = $this->pay->getPayment(['my_class_id' => $class_id])->get();
+        // $pay2 = $this->pay->getGeneralPayment(['year' => $this->year])->get();
+        // $payments = $pay2->count() ? $pay1->merge($pay2) : $pay1;
+        // $students = $this->student->getRecord($wh)->get();
 
-        $pay1 = $this->pay->getPayment(['my_class_id' => $class_id, 'year' => $this->year])->get();
-        $pay2 = $this->pay->getGeneralPayment(['year' => $this->year])->get();
-        $payments = $pay2->count() ? $pay1->merge($pay2) : $pay1;
-        $students = $this->student->getRecord($wh)->get();
+        // if($payments->count() && $students->count()){
+        //     foreach($payments as $p){
+        //         foreach($students as $st){
+        //             $pr['student_id'] = $st->user_id;
+        //             $pr['payment_id'] = $p->id;
+        //             $pr['year'] = $this->year;
+        //             $rec = $this->pay->createRecord($pr);
+        //             $rec->ref_no ?: $rec->update(['ref_no' => mt_rand(100000, 99999999)]);
 
-        if($payments->count() && $students->count()){
-            foreach($payments as $p){
-                foreach($students as $st){
-                    $pr['student_id'] = $st->user_id;
-                    $pr['payment_id'] = $p->id;
-                    $pr['year'] = $this->year;
-                    $rec = $this->pay->createRecord($pr);
-                    $rec->ref_no ?: $rec->update(['ref_no' => mt_rand(100000, 99999999)]);
-
-                }
-            }
-        }
-
-        return Qs::goToRoute(['payments.manage', $class_id]);
+        //         }
+        //     }
+        // }
+        $student = array();
+        return Qs::goToRoute(['payments.manage', $student]);
     }
 
     public function store(PaymentCreate $req)

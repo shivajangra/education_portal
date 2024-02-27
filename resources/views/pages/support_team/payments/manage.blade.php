@@ -13,29 +13,47 @@
               <div class="row">
                   <div class="col-md-6 offset-md-3">
                       <div class="row">
-                          <div class="col-md-10">
-                              <div class="form-group">
+                          <!-- <div class="col-md-12"> -->
+                              <div class="form-group col-md-12">
                                   <label for="my_class_id" class="col-form-label font-weight-bold">Class:</label>
                                   <select required id="my_class_id" name="my_class_id" class="form-control select">
                                       <option value="">Select Class</option>
                                       @foreach($my_classes as $c)
-                                          <option {{ ($selected && $my_class_id == $c->id) ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->name }}</option>
+                                      <option {{ ($selected && $my_class_id == $c->id) ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->name }}</option>
                                       @endforeach
-                                  </select>
-                                  <label for="duration" class="col-form-label font-weight-bold">Duration:</label>
-                                  <select required id="duration" name="duration" class="form-control select">
-                                      <option class="duration" value="monthly">Monthly</option>
-                                      <option class="duration" value="yearly">Yearly</option>
-                                  </select>
-                              </div>
-                              <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
-                          </div>
-                          <!-- <div class="col-md-2 mt-4">
-                              <div class="text-right mt-1">
-                              </div> -->
-                          <!-- </div> -->
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                <label for="duration" class="col-form-label font-weight-bold">Duration:</label>
+                                     <select required id="duration" name="duration" class="form-control select">
+                                           <option class="duration" value="monthly">Monthly</option>
+                                           <option class="duration" value="yearly">Yearly</option>
+                                     </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                <label for="months" class="col-form-label font-weight-bold">Select Month:</label>
+                                    <select required id="months" name="months" class="form-control select monthss">
+                                       @foreach($months as $m)
+                                            <option value="{{ $loop->index }}">{{ $m }}</option>
+                                        @endforeach
+                                     </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                <label for="year" class="col-form-label font-weight-bold">Select Year:</label>
+                                    <select required id="year" name="year" class="form-control select monthss">
+                                       @foreach($years as $y)
+                                            <option value="{{ $y }}">{{ $y }}</option>
+                                        @endforeach
+                                     </select>
+                                </div>
 
-                      </div>
+                                <!-- </div> -->
+                                <!-- <div class="col-md-2 mt-4">
+                                    <div class="text-right mt-1">
+                                        </div> -->
+                                        <!-- </div> -->
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
                   </div>
               </div>
 
@@ -45,16 +63,25 @@
 
     <script type='text/javascript'>
 
-        $duration = document.querySelector('#duration').value;
-        $form = document.querySelector('.form-group').value;
-
-        if($duration == 'monthly'){
-            $duration.append
-        }
-
-        console.log($duration)
         
+        $('#duration').on('change', ()=>{
+            $duration = document.querySelector('#duration').value;
+            console.log($duration)
+        })
 
+        $('#my_class_id').on('change', (event) => {
+            $.ajax({
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                url: "http://127.0.0.1:8000/api/payments/getStudentByClass/" + event.target.value,
+                type: "GET",
+                success: function (result) {
+                    console.log(result);
+                },
+            });
+        })
+        
     </script>
     @if($selected)
         <div class="card">
@@ -90,7 +117,6 @@
                             </div>
                                 </div>
                             </td>
-
                         </tr>
                     @endforeach
                     </tbody>
