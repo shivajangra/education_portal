@@ -8,9 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\PaymentCreate;
 use App\Http\Requests\Payment\PaymentUpdate;
 use App\Models\Setting;
-use App\Repositories\MyClassRepo;
 use App\Repositories\PaymentRepo;
-use App\Repositories\StudentRepo;
+use App\Repositories\UserRepo;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,14 +17,13 @@ use PDF;
 
 class PayrollController extends Controller
 {
-    protected $my_class, $pay, $student, $year;
+    protected $my_class, $pay, $user, $year;
 
-    public function __construct(MyClassRepo $my_class, PaymentRepo $pay, StudentRepo $student)
+    public function __construct(PaymentRepo $pay, UserRepo $user)
     {
-        $this->my_class = $my_class;
         $this->pay = $pay;
         $this->year = Qs::getCurrentSession();
-        $this->student = $student;
+        $this->user = $user;
 
         $this->middleware('teamAccount');
     }
@@ -57,13 +55,13 @@ class PayrollController extends Controller
 
     public function select_year(Request $req)
     {
-        return Qs::goToRoute(['payments.show', $req->year]);
+        return Qs::goToRoute(['payroll.show', $req->year]);
     }
 
     public function create()
     {
-        $d['my_classes'] = $this->my_class->all();
-        return view('pages.support_team.payments.create', $d);
+        $d['users'] = $this->user->getStaffRecord();
+        return view('pages.support_team.payroll.create', $d);
     }
 
     public function invoice($st_id, $year = NULL)

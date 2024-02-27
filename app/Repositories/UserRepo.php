@@ -67,6 +67,12 @@ class UserRepo {
         return StaffRecord::where($where)->update($data);
     }
 
+    public function getStaffRecord()
+    {
+        
+        return User::whereIn('user_type', array('teacher','accountant'))->orderBy('name', 'asc')->get();
+    }
+
     /********** BLOOD GROUPS ********/
     public function getBloodGroups()
     {

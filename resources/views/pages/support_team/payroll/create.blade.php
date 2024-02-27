@@ -4,29 +4,29 @@
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">Create Payment</h6>
+            <h6 class="card-title">Create Single Payment</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <form class="ajax-store" method="post" action="{{ route('payments.store') }}">
+                    <form class="ajax-store" method="post" action="{{ route('payroll.store') }}">
                         @csrf
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label font-weight-semibold">Title <span class="text-danger">*</span></label>
                             <div class="col-lg-9">
-                                <input name="title" value="{{ old('title') }}" required type="text" class="form-control" placeholder="Eg. School Fees">
+                                <input name="title" value="{{ old('title') }}" required type="text" class="form-control" placeholder="Eg. Bonus / Over Time">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="my_class_id" class="col-lg-3 col-form-label font-weight-semibold">Class </label>
                             <div class="col-lg-9">
-                                <select class="form-control select-search" name="my_class_id" id="my_class_id">
-                                    <option value="">All Classes</option>
-                                    @foreach($my_classes as $c)
-                                        <option {{ old('my_class_id') == $c->id ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->name }}</option>
+                                <select class="form-control select-search" name="id" id="id">
+                                    <option value="">All Staff</option>
+                                    @foreach($users as $c)
+                                        <option {{ old('id') == $c->id ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->name ." : ". $c->phone }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
+                            <button type="submit" class="btn btn-primary">Pay Now <i class="icon-paperplane ml-2"></i></button>
                         </div>
                     </form>
                 </div>

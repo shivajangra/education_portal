@@ -92,7 +92,7 @@
                                 <a href="#" class="nav-link {{ in_array(Route::currentRouteName(), ['payroll.index', 'payroll.edit', 'payroll.create', 'payroll.manage', 'payroll.show', 'payroll.invoice']) ? 'active' : '' }}">Payroll</a>
 
                                 <ul class="nav nav-group-sub">
-                                    <li class="nav-item"><a href="{{ route('payroll.create') }}" class="nav-link {{ Route::is('payroll.create') ? 'active' : '' }}">Create Payment</a></li>
+                                    <li class="nav-item"><a href="{{ route('payroll.create') }}" class="nav-link {{ Route::is('payroll.create') ? 'active' : '' }}">Made Single Payment</a></li>
                                     <li class="nav-item"><a href="{{ route('payroll.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['payroll.index', 'payroll.edit', 'payroll.show']) ? 'active' : '' }}">Manage Payments</a></li>
                                     <li class="nav-item"><a href="{{ route('payroll.manage') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['payroll.manage', 'payroll.invoice', 'payroll.receipts']) ? 'active' : '' }}">Staff Payments</a></li>
 
