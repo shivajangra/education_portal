@@ -84,11 +84,11 @@
     <div class="modal-dialog" role="document">
     <div class="modal-content">
     	<div class="alert alert-danger" style="display:none"></div>
+        <form id="addevent" method="post" action="{{route('add-event')}}">
+            @csrf @method('POST')
       <div class="modal-header">
-      	<form id="addevent" method="post" action="{{route('add-event')}}">
-          @csrf @method('POST')
         <h5 class="modal-title font-weight-bold h4">Add Event</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -105,8 +105,6 @@
                 <input type="datetime-local" id="time_from" name="time_from" >
                 <!-- <input type="text" class="form-control" name="time_from" id="club"> -->
               </div>
-          </div>
-          <div class="row">
              <div class="form-group col-md">
                 <label for="time_to" class="d-block">Time To:</label>
                 <input type="datetime-local" id="time_to" name="time_to" >
@@ -114,8 +112,8 @@
           </div>
           <div class="row">
             <div class="form-group col-md">
-              <label for="color" class="d-block">Color:</label>
-              <select name="color" id="color_code">
+              <label for="color">Color:</label>
+              <select name="color" id="color_code" class="mx-2 px-2 py-1">
                 <option value="#EF5350">Red</option>
                 <option value="#6ef06e">Green</option>
                 <option value="#2596be">Blue</option>
@@ -127,7 +125,7 @@
       </div>
       <div class="modal-footer">
       	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">Save changes</button>
+        <button type="submit" class="btn btn-success">Save</button>
         </div>
 </form>
     </div>

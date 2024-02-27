@@ -22,14 +22,18 @@
                                           <option {{ ($selected && $my_class_id == $c->id) ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->name }}</option>
                                       @endforeach
                                   </select>
+                                  <label for="duration" class="col-form-label font-weight-bold">Duration:</label>
+                                  <select required id="duration" name="duration" class="form-control select">
+                                      <option class="duration" value="monthly">Monthly</option>
+                                      <option class="duration" value="yearly">Yearly</option>
+                                  </select>
                               </div>
+                              <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
                           </div>
-
-                          <div class="col-md-2 mt-4">
+                          <!-- <div class="col-md-2 mt-4">
                               <div class="text-right mt-1">
-                                  <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
-                              </div>
-                          </div>
+                              </div> -->
+                          <!-- </div> -->
 
                       </div>
                   </div>
@@ -38,6 +42,20 @@
             </form>
         </div>
     </div>
+
+    <script type='text/javascript'>
+
+        $duration = document.querySelector('#duration').value;
+        $form = document.querySelector('.form-group').value;
+
+        if($duration == 'monthly'){
+            $duration.append
+        }
+
+        console.log($duration)
+        
+
+    </script>
     @if($selected)
         <div class="card">
             <div class="card-body">
