@@ -18,9 +18,7 @@
                                 <div class="form-group">
                                     <label for="year" class="col-form-label font-weight-bold">Select Year <span class="text-danger">*</span></label>
                                     <select data-placeholder="Select Year" required id="year" name="year" class="form-control select">
-                                        @foreach($years as $yr)
-                                            <option {{ ($selected && $year == $yr->year) ? 'selected' : '' }} value="{{ $yr->year }}">{{ $yr->year }}</option>
-                                        @endforeach
+                                    <option value="23">test</option>
                                     </select>
                                 </div>
                             </div>
@@ -42,7 +40,7 @@
 @if($selected)
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">Manage Payments for {{ $year }} Session</h6>
+            <!-- <h6 class="card-title">Manage Payments for {{ $year }} Session</h6> -->
             {!! Qs::getPanelOptions() !!}
         </div>
 

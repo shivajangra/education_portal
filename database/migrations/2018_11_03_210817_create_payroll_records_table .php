@@ -15,7 +15,7 @@ class CreatePayrollRecordsTable extends Migration
     {
         Schema::create('payroll_records', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('payment_id');
+            $table->unsignedInteger('payroll_id');
             $table->unsignedInteger('staff_id');
             $table->string('ref_no', 100)->unique()->nullable();
             $table->integer('amt_paid')->nullable();

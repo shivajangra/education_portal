@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Http\Request;
 
 /*
@@ -15,4 +14,7 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::group(['prefix' => 'payments'], function(){
+    Route::get('getStudentByClass/{class_id?}', 'PaymentController@getStudentByClass')->name('payments.getStudentByClass');
 });

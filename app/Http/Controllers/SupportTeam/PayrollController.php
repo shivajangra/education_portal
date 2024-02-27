@@ -5,10 +5,10 @@ namespace App\Http\Controllers\SupportTeam;
 use App\Helpers\Qs;
 use App\Helpers\Pay;
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Http\Requests\Payment\PaymentCreate;
 use App\Http\Requests\Payment\PaymentUpdate;
-use App\Models\Setting;
-use App\Repositories\PaymentRepo;
+use App\Repositories\PayrollRepo;
 use App\Repositories\UserRepo;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class PayrollController extends Controller
 {
     protected $my_class, $pay, $user, $year;
 
-    public function __construct(PaymentRepo $pay, UserRepo $user)
+    public function __construct(PayrollRepo $pay, UserRepo $user)
     {
         $this->pay = $pay;
         $this->year = Qs::getCurrentSession();
@@ -31,9 +31,9 @@ class PayrollController extends Controller
     public function index()
     {
         $d['selected'] = false;
-        $d['years'] = $this->pay->getPaymentYears();
+        // $d['years'] = $this->pay->getPaymentYears();
 
-        return view('pages.support_team.payments.index', $d);
+        return view('pages.support_team.payroll.index', $d);
     }
 
     public function show($year)
@@ -49,7 +49,7 @@ class PayrollController extends Controller
         $d['years'] = $this->pay->getPaymentYears();
         $d['year'] = $year;
 
-        return view('pages.support_team.payments.index', $d);
+        return view('pages.support_team.payroll.index', $d);
 
     }
 
@@ -64,6 +64,27 @@ class PayrollController extends Controller
         return view('pages.support_team.payroll.create', $d);
     }
 
+    public function store(PaymentCreate $req)
+    {
+        if (!$req->id) {
+            $d['users'] = $this->user->getStaffRecord();
+            return view('pages.support_team.payroll.create', $d);
+        }
+
+        $data = $req->all();
+        $data['ref_no'] = Pay::genRefCode();
+        $data['staff_id'] = $req->id;
+        $p = $this->pay->create($data);
+        $data['payroll_id'] = $p->id;
+        $data['amt_paid'] = $p->amount;
+        $data['paid'] = 1;
+        $data['balance'] = 0;
+        $data['for_month'] = "once";
+        $rec = $this->pay->createRecord($data);
+
+        return Qs::jsonStoreOk();
+    } 
+
     public function invoice($st_id, $year = NULL)
     {
         if(!$st_id) {return Qs::goWithDanger();}
@@ -75,7 +96,7 @@ class PayrollController extends Controller
         $d['uncleared'] = $pr->where('paid', 0);
         $d['cleared'] = $pr->where('paid', 1);
 
-        return view('pages.support_team.payments.invoice', $d);
+        return view('pages.support_team.payroll.invoice', $d);
     }
 
     public function receipts($pr_id)
@@ -94,7 +115,7 @@ class PayrollController extends Controller
             return [$s->type => $s->description];
         });
 
-        return view('pages.support_team.payments.receipt', $d);
+        return view('pages.support_team.payroll.receipt', $d);
     }
 
     public function pdf_receipts($pr_id)
@@ -115,9 +136,9 @@ class PayrollController extends Controller
 
         $pdf_name = 'Receipt_'.$pr->ref_no;
 
-        return PDF::loadView('pages.support_team.payments.receipt', $d)->download($pdf_name);
+        return PDF::loadView('pages.support_team.payroll.receipt', $d)->download($pdf_name);
 
-        //return $this->downloadReceipt('pages.support_team.payments.receipt', $d, $pdf_name);
+        //return $this->downloadReceipt('pages.support_team.payroll.receipt', $d, $pdf_name);
     }
 
     protected function downloadReceipt($page, $data, $name = NULL){
@@ -165,7 +186,7 @@ class PayrollController extends Controller
             $d['my_class_id'] = $class_id;
         }
 
-        return view('pages.support_team.payments.manage', $d);
+        return view('pages.support_team.payroll.manage', $d);
     }
 
     public function select_class(Request $req)
@@ -197,21 +218,11 @@ class PayrollController extends Controller
         return Qs::goToRoute(['payments.manage', $class_id]);
     }
 
-    public function store(PaymentCreate $req)
-    {
-        $data = $req->all();
-        $data['year'] = $this->year;
-        $data['ref_no'] = Pay::genRefCode();
-        $this->pay->create($data);
-
-        return Qs::jsonStoreOk();
-    }
-
     public function edit($id)
     {
         $d['payment'] = $pay = $this->pay->find($id);
 
-        return is_null($pay) ? Qs::goWithDanger('payments.index') : view('pages.support_team.payments.edit', $d);
+        return is_null($pay) ? Qs::goWithDanger('payments.index') : view('pages.support_team.payroll.edit', $d);
     }
 
     public function update(PaymentUpdate $req, $id)
