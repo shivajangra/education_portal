@@ -56,7 +56,7 @@ class MyClassController extends Controller
 
     public function update(ClassUpdate $req, $id)
     {
-        $data = $req->only(['name']);
+        $data = $req->only(['name','fees']);
         $this->my_class->update($id, $data);
 
         return Qs::jsonUpdateOk();
