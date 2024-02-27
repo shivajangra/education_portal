@@ -68,7 +68,7 @@
 
                 {{--Administrative--}}
                 @if(Qs::userIsAdministrative())
-                    <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['payments.index', 'payments.create', 'payments.invoice', 'payments.receipts', 'payments.edit', 'payments.manage', 'payments.show',]) ? 'nav-item-expanded nav-item-open' : '' }} ">
+                    <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['payments.index', 'payments.create', 'payments.invoice', 'payments.receipts', 'payments.edit', 'payments.manage', 'payments.show','payroll.index', 'payroll.create', 'payroll.edit', 'payroll.manage', 'payroll.show', 'payroll.invoice',]) ? 'nav-item-expanded nav-item-open' : '' }} ">
                         <a href="#" class="nav-link"><i class="icon-office"></i> <span> Administrative</span></a>
 
                         <ul class="nav nav-group-sub" data-submenu-title="Administrative">
@@ -77,12 +77,24 @@
                             @if(Qs::userIsTeamAccount())
                             <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['payments.index', 'payments.create', 'payments.edit', 'payments.manage', 'payments.show', 'payments.invoice']) ? 'nav-item-expanded' : '' }}">
 
-                                <a href="#" class="nav-link {{ in_array(Route::currentRouteName(), ['payments.index', 'payments.edit', 'payments.create', 'payments.manage', 'payments.show', 'payments.invoice']) ? 'active' : '' }}">Payments</a>
+                                <a href="#" class="nav-link {{ in_array(Route::currentRouteName(), ['payments.index', 'payments.edit', 'payments.create', 'payments.manage', 'payments.show', 'payments.invoice']) ? 'active' : '' }}">Fees</a>
 
                                 <ul class="nav nav-group-sub">
                                     <li class="nav-item"><a href="{{ route('payments.create') }}" class="nav-link {{ Route::is('payments.create') ? 'active' : '' }}">Create Payment</a></li>
-                                    <li class="nav-item"><a href="{{ route('payments.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['payments.index', 'payments.edit', 'payments.show']) ? 'active' : '' }}">Manage Payments</a></li>
-                                    <li class="nav-item"><a href="{{ route('payments.manage') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['payments.manage', 'payments.invoice', 'payments.receipts']) ? 'active' : '' }}">Student Payments</a></li>
+                                    <li class="nav-item"><a href="{{ route('payments.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['payments.index', 'payments.edit', 'payments.show']) ? 'active' : '' }}">Manage Fees</a></li>
+                                    <li class="nav-item"><a href="{{ route('payments.manage') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['payments.manage', 'payments.invoice', 'payments.receipts']) ? 'active' : '' }}">Student Fees</a></li>
+
+                                </ul>
+
+                            </li>
+                            <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['payroll.index', 'payroll.create', 'payroll.edit', 'payroll.manage', 'payroll.show', 'payroll.invoice']) ? 'nav-item-expanded' : '' }}">
+
+                                <a href="#" class="nav-link {{ in_array(Route::currentRouteName(), ['payroll.index', 'payroll.edit', 'payroll.create', 'payroll.manage', 'payroll.show', 'payroll.invoice']) ? 'active' : '' }}">Payroll</a>
+
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="{{ route('payroll.create') }}" class="nav-link {{ Route::is('payroll.create') ? 'active' : '' }}">Create Payment</a></li>
+                                    <li class="nav-item"><a href="{{ route('payroll.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['payroll.index', 'payroll.edit', 'payroll.show']) ? 'active' : '' }}">Manage Payments</a></li>
+                                    <li class="nav-item"><a href="{{ route('payroll.manage') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['payroll.manage', 'payroll.invoice', 'payroll.receipts']) ? 'active' : '' }}">Staff Payments</a></li>
 
                                 </ul>
 
@@ -146,10 +158,10 @@
                         <a href="{{ route('classes.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['classes.index','classes.edit']) ? 'active' : '' }}"><i class="icon-windows2"></i> <span> Classes</span></a>
                     </li>
 
-                    {{--Manage Dorms--}}
+                    <!-- {{--Manage Dorms--}}
                     <li class="nav-item">
                         <a href="{{ route('dorms.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['dorms.index','dorms.edit']) ? 'active' : '' }}"><i class="icon-home9"></i> <span> Dormitories</span></a>
-                    </li>
+                    </li> -->
 
                     {{--Manage Sections--}}
                     <li class="nav-item">

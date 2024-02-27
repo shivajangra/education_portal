@@ -95,6 +95,19 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('pay_now/{id}', 'PaymentController@pay_now')->name('payments.pay_now');
         });
 
+        /*************** Payroll *****************/
+        Route::group(['prefix' => 'payroll'], function(){
+
+            Route::get('manage/{class_id?}', 'PayrollController@manage')->name('payroll.manage');
+            Route::get('invoice/{id}/{year?}', 'PayrollController@invoice')->name('payroll.invoice');
+            Route::get('receipts/{id}', 'PayrollController@receipts')->name('payroll.receipts');
+            Route::get('pdf_receipts/{id}', 'PayrollController@pdf_receipts')->name('payroll.pdf_receipts');
+            Route::post('select_year', 'PayrollController@select_year')->name('payroll.select_year');
+            Route::post('select_class', 'PayrollController@select_class')->name('payroll.select_class');
+            Route::delete('reset_record/{id}', 'PayrollController@reset_record')->name('payroll.reset_record');
+            Route::post('pay_now/{id}', 'PayrollController@pay_now')->name('payroll.pay_now');
+        });
+
         /*************** Pins *****************/
         Route::group(['prefix' => 'pins'], function(){
             Route::get('create', 'PinController@create')->name('pins.create');
@@ -145,6 +158,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('exams', 'ExamController');
         Route::resource('dorms', 'DormController');
         Route::resource('payments', 'PaymentController');
+        Route::resource('payroll', 'PayrollController');
 
     });
 

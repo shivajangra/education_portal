@@ -19,15 +19,22 @@ class MyClassesTableSeeder extends Seeder
         $ct = ClassType::pluck('id')->all();
 
         $data = [
-            ['name' => 'Pre Nursery', 'class_type_id' => $ct[0]],
-            ['name' => 'Nursery', 'class_type_id' => $ct[1]],
-            ['name' => 'Junior Secondary (UKG)', 'class_type_id' => $ct[2]],
-            ['name' => 'Senior Secondary (LKG)', 'class_type_id' => $ct[3]],
-            ['name' => 'Fisrt', 'class_type_id' => $ct[4]],
-            ['name' => 'Second', 'class_type_id' => $ct[5]],
-            ['name' => 'Third', 'class_type_id' => $ct[6]],
-            ['name' => 'Fourth', 'class_type_id' => $ct[7]],
-            ['name' => 'Fifth', 'class_type_id' => $ct[8]],
+            // ['name' => 'Pre Nursery', 'fees' => 500, 'class_type_id' => $ct[0]],
+            // ['name' => 'Nursery', 'fees' => 500, 'class_type_id' => $ct[1]],
+            // ['name' => 'Junior Secondary (UKG)', 'fees' => 500, 'class_type_id' => $ct[2]],
+            // ['name' => 'Senior Secondary (LKG)', 'fees' => 500, 'class_type_id' => $ct[3]],
+            ['name' => 'Fisrt', 'fees' => 500, 'class_type_id' => $ct[0]],
+            ['name' => 'Second', 'fees' => 500, 'class_type_id' => $ct[1]],
+            ['name' => 'Third', 'fees' => 500, 'class_type_id' => $ct[2]],
+            ['name' => 'Class IV', 'fees' => 500, 'class_type_id' => $ct[3]],
+            ['name' => 'Class V', 'fees' => 500, 'class_type_id' => $ct[4]],
+            ['name' => 'Class VI', 'fees' => 500, 'class_type_id' => $ct[5]],
+            ['name' => 'Class VII', 'fees' => 500, 'class_type_id' => $ct[6]],
+            ['name' => 'Class VIII', 'fees' => 500, 'class_type_id' => $ct[7]],
+            ['name' => 'Class IX', 'fees' => 500, 'class_type_id' => $ct[8]],
+            ['name' => 'Class X', 'fees' => 500, 'class_type_id' => $ct[8]],
+            ['name' => 'Class XI', 'fees' => 500, 'class_type_id' => $ct[10]],
+            ['name' => 'Class XII', 'fees' => 500, 'class_type_id' => $ct[11]],
             ];
 
         DB::table('my_classes')->insert($data);

@@ -19,6 +19,12 @@
                                 <input name="name" value="{{ $c->name }}" required type="text" class="form-control" placeholder="Name of Class">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label font-weight-semibold">Fees <span class="text-danger">*</span></label>
+                            <div class="col-lg-9">
+                                <input name="fees" value="{{ $c->fees }}" required type="number" class="form-control" placeholder="Fees">
+                            </div>
+                        </div>
 
                       {{--
                       <div class="form-group row">
