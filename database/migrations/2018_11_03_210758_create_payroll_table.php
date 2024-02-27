@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration
+class CreatePayrollTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,9 +21,10 @@ class CreateEventsTable extends Migration
             $table->string('method', 100)->default('cash');
             $table->unsignedInteger('staff_id')->nullable();
             $table->string('description')->nullable();
-            $table->string('payPeriod')->default('Monthly');; // monthly / Yearly
+            $table->string('pay_period')->default('monthly');
             $table->timestamps();
         });
+
     }
 
     /**

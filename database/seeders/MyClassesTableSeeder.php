@@ -23,7 +23,7 @@ class MyClassesTableSeeder extends Seeder
             // ['name' => 'Nursery', 'fees' => 500, 'class_type_id' => $ct[1]],
             // ['name' => 'Junior Secondary (UKG)', 'fees' => 500, 'class_type_id' => $ct[2]],
             // ['name' => 'Senior Secondary (LKG)', 'fees' => 500, 'class_type_id' => $ct[3]],
-            ['name' => 'Fisrt', 'fees' => 500, 'class_type_id' => $ct[0]],
+            ['name' => 'First', 'fees' => 500, 'class_type_id' => $ct[0]],
             ['name' => 'Second', 'fees' => 500, 'class_type_id' => $ct[1]],
             ['name' => 'Third', 'fees' => 500, 'class_type_id' => $ct[2]],
             ['name' => 'Class IV', 'fees' => 500, 'class_type_id' => $ct[3]],

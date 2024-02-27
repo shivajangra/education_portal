@@ -4,7 +4,7 @@
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">Create Payment</h6>
+            <h6 class="card-title">Create Payment (Other than student fees)</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 

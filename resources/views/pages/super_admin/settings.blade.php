@@ -4,7 +4,7 @@
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title font-weight-semibold">Update System Settungs </h6>
+            <h6 class="card-title font-weight-semibold">Update System Settings </h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 
@@ -73,16 +73,16 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lock_exam" class="col-lg-3 col-form-label font-weight-semibold">Lock Exam</label>
+                            <!-- <label for="lock_exam" class="col-lg-3 col-form-label font-weight-semibold">Lock Exam</label>
                             <div class="col-lg-3">
                                 <select class="form-control select" name="lock_exam" id="lock_exam">
                                     <option {{ $s['lock_exam'] ? 'selected' : '' }} value="1">Yes</option>
-                                    <option {{ $s['lock_exam'] ?: 'selected' }} value="0">No</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-6">
+                                    <option {{ $s['lock_exam'] ?: 'selected' }} value="0">No</option> -->
+                                <!-- </select>
+                            </div> -->
+                            <!-- <div class="col-lg-6">
                                     <span class="font-weight-bold font-italic text-info-800">{{ __('msg.lock_exam') }}</span>
-                            </div>
+                            </div> -->
                         </div>
                 </div>
                 <div class="col-md-6">
