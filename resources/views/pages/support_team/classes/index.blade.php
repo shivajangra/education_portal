@@ -22,6 +22,7 @@
                                 <th>S/N</th>
                                 <th>Name</th>
                                 <th>Class Type</th>
+                                <th>Fees</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -31,6 +32,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $c->name }}</td>
                                     <td>{{ $c->class_type->name }}</td>
+                                    <td>{{ $c->fees }}</td>
                                     <td class="text-center">
                                         <div class="list-icons">
                                             <div class="dropdown">
@@ -78,6 +80,12 @@
                                     <label class="col-lg-3 col-form-label font-weight-semibold">Name <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
                                         <input name="name" value="{{ old('name') }}" required type="text" class="form-control" placeholder="Name of Class">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label font-weight-semibold">Fees <span class="text-danger">*</span></label>
+                                    <div class="col-lg-9">
+                                        <input name="fees" value="{{ old('fees') }}" required type="number" class="form-control" placeholder="Fees">
                                     </div>
                                 </div>
 

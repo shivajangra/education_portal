@@ -29,8 +29,18 @@ class SettingsTableSeeder extends Seeder
             ['type' => 'email_pass', 'description' => ''],
             ['type' => 'lock_exam', 'description' => 0],
             ['type' => 'logo', 'description' => ''],
-            ['type' => 'next_term_fees_pn', 'description' => '25000'],
-            ['type' => 'next_term_fees_n', 'description' => '25600'],
+            ['type' => 'next_term_fees_1', 'description' => '25000'],
+            ['type' => 'next_term_fees_2', 'description' => '25600'],
+            ['type' => 'next_term_fees_3', 'description' => '25600'],
+            ['type' => 'next_term_fees_4', 'description' => '25600'],
+            ['type' => 'next_term_fees_5', 'description' => '25600'],
+            ['type' => 'next_term_fees_6', 'description' => '25600'],
+            ['type' => 'next_term_fees_7', 'description' => '25600'],
+            ['type' => 'next_term_fees_8', 'description' => '25600'],
+            ['type' => 'next_term_fees_9', 'description' => '25600'],
+            ['type' => 'next_term_fees_10', 'description' => '25600'],
+            ['type' => 'next_term_fees_11', 'description' => '25600'],
+            ['type' => 'next_term_fees_12', 'description' => '25600'],
         ];
 
         DB::table('settings')->insert($data);

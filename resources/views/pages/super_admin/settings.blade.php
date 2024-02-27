@@ -96,7 +96,7 @@
                            <input class="form-control" value="{{ $s['next_term_fees_'.strtolower($ct->code)] }}" name="next_term_fees_{{ strtolower($ct->code) }}" placeholder="{{ $ct->name }}" type="text">
                        </div>
                    </div>
-                       @endforeach
+                    @endforeach
                </fieldset>
                     <hr class="divider">
 

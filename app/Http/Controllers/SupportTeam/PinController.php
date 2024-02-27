@@ -29,7 +29,8 @@ class PinController extends Controller
         $d['pin_count'] = $this->pin->countValid();
         $d['valid_pins'] = $this->pin->getValid();
         $d['used_pins'] = $this->pin->getInValid();
-        return view('pages.support_team.pins.index', $d);
+        echo($d);
+        // return view('pages.support_team.pins.index', $d);
     }
 
     public function create()

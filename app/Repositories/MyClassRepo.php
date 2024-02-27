@@ -42,7 +42,7 @@ class MyClassRepo
 
     public function getTypes()
     {
-        return ClassType::orderBy('name', 'asc')->get();
+        return ClassType::orderByRaw('CAST(code as UNSIGNED)')->orderBy('code', 'asc')->get();
     }
 
     public function findType($class_type_id)
